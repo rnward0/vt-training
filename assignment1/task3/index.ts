@@ -8,4 +8,7 @@ const f = <A, B, C>(g: BinaryFunction<A, B, C>, a: A): UnaryFunction<B, C> => {
   };
 };
 
-//Step 2:
+//Step 2: partial
+
+//Step 3: Demonstrate use
+console.log(f(Math.pow, 2)(2));
