@@ -28,4 +28,7 @@
   const domainName = protocol("heyauto");
   const full = domainName("com");
   console.log(full);
+
+  const full2 = urlBuilder("https")("google")("com");
+  console.log(full2);
 }
