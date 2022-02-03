@@ -127,7 +127,7 @@ const composeOperator = (...argsFunc: Function[]): ((arg: any) => any) => {
 ```
 composeOperator takes an array of functions as its only argument, then returns a function that takes in any number of arguments (as the first function to be
 executed can have any number of arguments). This anonymous function then loops through the array of functions in reverse (as compose begins with the last function
-provided), and calls each function with the output of the previously called function as its only argument (as all functions except the first can only be unary).
+provided), and calls each function with the output of the previously called function as its only argument (as all functions - except the first - must be unary).
 
 ### Usage of composeOperator
 ```ts
