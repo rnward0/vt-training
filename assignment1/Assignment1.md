@@ -30,14 +30,14 @@ console.log(full2);
 ```
 
 ### Elm implementation of building URL
-```ts
+```elm
 constructUrl : String -> String -> String -> String
 constructUrl protocol domainName extension  =
     protocol ++ "://" ++ domainName ++ "." ++ extension
 ```
 
 ### Usage of constructUrl in Elm
-```ts
+```elm
 func1 = constructUrl "https"
 func2 = func1 "heyauto"
 full = func2 "com"
