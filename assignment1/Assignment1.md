@@ -18,7 +18,7 @@ function urlBuilder(
 ```
 
 ### Usage of urlBuilder in Typescript
-```
+```ts
 const protocol = urlBuilder("https");
 const domainName = protocol("heyauto");
 const full = domainName("com");
@@ -29,14 +29,14 @@ console.log(full2);
 ```
 
 ### Elm implementation of building URL
-```
+```ts
 constructUrl : String -> String -> String -> String
 constructUrl protocol domainName extension  =
     protocol ++ "://" ++ domainName ++ "." ++ extension
 ```
 
 ### Usage of constructUrl in Elm
-```
+```ts
 func1 = constructUrl "https"
 func2 = func1 "heyauto"
 full = func2 "com"
@@ -47,7 +47,7 @@ allInOne = constructUrl "https" "heyauto" "com"
 ## Task 2 Solution
 
 ### Usage of compose in Typescript example 1
-```
+```ts
 function divideBy10(x: number): number {
   return x / 10;
 }
@@ -61,7 +61,7 @@ console.log(addOneZeroCompose(5));
 ```
 
 ### Usage of compose in Typescript example 2
-```
+```ts
 function stripExtension(partialUrl: string): string {
   return partialUrl.substring(0, partialUrl.indexOf("."));
 }
@@ -75,7 +75,7 @@ console.log(getProtocolComposed("https://heyauto.com"));
 ```
 
 ### Usage of pipe in Typescript example 1
-```
+```ts
 function divideBy10(x: number): number {
   return x / 10;
 }
@@ -89,7 +89,7 @@ console.log(addOneZeroPipe(5));
 ```
 
 ### Usage of pipe in Typescript example 2
-```
+```ts
 function stripExtension(partialUrl: string): string {
   return partialUrl.substring(0, partialUrl.indexOf("."));
 }
@@ -111,7 +111,7 @@ must be unary
 
 
 ### Writing a compose operator in Typescript
-```
+```ts
 const composeOperator = (...argsFunc: Function[]): ((arg: any) => any) => {
   return function (...argsParam: any[]) {
     let i: number = argsFunc.length - 1;
@@ -125,7 +125,7 @@ const composeOperator = (...argsFunc: Function[]): ((arg: any) => any) => {
 ```
 
 ### Usage of composeOperator
-```
+```ts
 function divideBy10(x: number): number {
   return x / 10;
 }
@@ -139,7 +139,7 @@ console.log("Compose operator result is: " + compOp(5));
 ```
 
 ### Writing a pipe operator in Typescript
-```
+```ts
 const pipeOperator = (...argsFunc: Function[]): ((arg: any) => any) => {
   return function (...argsParam: any[]) {
     let nextArg: any = argsParam[0];
@@ -152,7 +152,7 @@ const pipeOperator = (...argsFunc: Function[]): ((arg: any) => any) => {
 ```
 
 ### Usage of pipeOperator
-```
+```ts
 function divideBy10(x: number): number {
   return x / 10;
 }
@@ -168,14 +168,14 @@ console.log("Pipe operator result is: " + pipeOp(5));
 ### Usage of compose in the HeyAuto codebase
 Compose is used when setting actions (modal actions, toaster actions, etc.), then dispatching that action
 
-```
+```ts
 const handleClose = compose(dispatch, modalActions.closeModal);
 ```
 
 ## Task 3 Solution
 
 ### Implementation of generic example
-```
+```ts
 const f = <A, B, C>(g: BinaryFunction<A, B, C>, a: A): UnaryFunction<B, C> => {
   return function (x: B) {
     return g(a, x);
@@ -184,7 +184,7 @@ const f = <A, B, C>(g: BinaryFunction<A, B, C>, a: A): UnaryFunction<B, C> => {
 ```
 
 ### Adding functions to demonstrate use of f
-```
+```ts
 function multiplyNumbers(x: number, y: number): number {
   return x * y;
 }
@@ -195,7 +195,7 @@ function printANumber(result: number): void {
 ```
 
 ### Function f is a partial function, below demonstrates its usage in different ways
-```
+```ts
 console.log(f(Math.pow, 2)(2));
 
 console.log(f(multiplyNumbers, 2)(4));
