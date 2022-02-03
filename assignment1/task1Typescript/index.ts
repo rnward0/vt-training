@@ -1,3 +1,5 @@
+// Typescript implementation and demonstration of add and urlBuilder functions with partial application
+
 {
   function add(x: number): (y: number) => number {
     return function (y: number): number {
@@ -32,3 +34,6 @@
   const full2 = urlBuilder("https")("google")("com");
   console.log(full2);
 }
+
+// Elm implementation and demonstration of urlBuilder function with partial application
+// https://ellie-app.com/gzVfvHxLWkba1
