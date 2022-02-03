@@ -194,7 +194,7 @@ function printANumber(result: number): void {
 }
 ```
 
-### Function f is a partial function, below demonstrates its usage in different ways
+### Function f is a partial function, the snippet below demonstrates its usage in multiple ways
 ```ts
 console.log(f(Math.pow, 2)(2));
 
