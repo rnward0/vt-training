@@ -2,6 +2,7 @@
 
 ### Link to assignment: https://github.com/vivid-theory/composable-software-construction-assignments/blob/main/assignment1.md
 
+
 ## Task 1 Solution
 
 ### Typescript implementation of building URL
@@ -43,6 +44,7 @@ full = func2 "com"
 
 allInOne = constructUrl "https" "heyauto" "com"
 ```
+
 
 ## Task 2 Solution
 
@@ -171,6 +173,7 @@ Compose is used when setting actions (modal actions, toaster actions, etc.), the
 ```ts
 const handleClose = compose(dispatch, modalActions.closeModal);
 ```
+
 
 ## Task 3 Solution
 
