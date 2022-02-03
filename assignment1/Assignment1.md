@@ -5,7 +5,8 @@
 ## Task 1 Solution
 
 ### Typescript implementation of building URL
-`function urlBuilder(
+```
+function urlBuilder(
   protocol: string
 ): (domainName: string) => (extension: string) => string {
   return function (domainName: string): (extension: string) => string {
@@ -13,7 +14,8 @@
       return protocol + "://" + domainName + "." + extension;
     };
   };
-}`
+}
+```
 
 ### Usage of urlBuilder in Typescript
 `
