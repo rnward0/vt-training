@@ -76,4 +76,3 @@ import { compose, pipe } from "ramda";
 
 //Step 4: Where is function composition used in heyauto and where should it be used?
 // - Used when setting actions (modal actions, toaster actions, etc.), then dispatching that action
-// -
