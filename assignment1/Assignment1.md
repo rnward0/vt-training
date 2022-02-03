@@ -155,7 +155,7 @@ const pipeOperator = (...argsFunc: Function[]): ((arg: any) => any) => {
   };
 };
 ```
-pipeOperator works the same way as composeOperator, except it loops forward through the array of functions
+pipeOperator works the same way as composeOperator, except it loops forward through the array of functions.
 
 ### Usage of pipeOperator
 ```ts
