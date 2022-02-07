@@ -4,8 +4,12 @@ const filter = <A>(a: A, arr: A[]): A[] => {
 };
 
 //f: Number -> Number -> [A] -> [A]
-const f = <A>(x: Number, y: Number, val: A[]): A[] => {
-  return val;
+const subset = <A>(start: number, end: number, val: A[]): A[] => {
+  if (start !== end) {
+    return val.slice(start, end);
+  } else {
+    return val;
+  }
 };
 
 //f: [String] -> {String: any} -> {String: any}
@@ -21,4 +25,4 @@ const combine = <A, B>(val: A[], val2: B[]): [[A, B]] => {
 //Testing
 console.log(filter(1, [2, 2, 3, 4, 1]));
 
-console.log(combine([1], ["hello"]));
+console.log(combine([1, 2, 3, 4], ["hello", "hi", "hey", "yes"]));
