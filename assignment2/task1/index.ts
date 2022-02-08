@@ -4,25 +4,22 @@ const filter = <A>(a: A, arr: A[]): A[] => {
 };
 
 //f: Number -> Number -> [A] -> [A]
-const subset = <A>(start: number, end: number, val: A[]): A[] => {
-  if (start !== end) {
-    return val.slice(start, end);
-  } else {
-    return val;
-  }
+const slice = <A>(start: number, end: number, val: A[]): A[] => {
+  return val.slice(start, end);
 };
 
 //f: [String] -> {String: any} -> {String: any}
-const g = (val: [String], obj: { String: any }): { String: any } => {
-  return { String: 1 };
+const g = (val: string[], obj: { [k: string]: any }): { [k: string]: any } => {
+  return { anything: 1 };
 };
 
-//f: [A] → [B] → [[A,B]]
-const combine = <A, B>(val: A[], val2: B[]): [[A, B]] => {
-  return [[val[0], val2[0]]];
+// f: [A] → [B] → [[A,B]]
+const combine = <A, B, C>(val: Array<A>, val2: Array<B>): C[][] => {
+  return Array(Array.prototype.concat(val, val2));
 };
 
-//Testing
+//Usage
 console.log(filter(1, [2, 2, 3, 4, 1]));
-
+console.log(slice(1, 5, ["a", "b", "c", "d", "e", "f"]));
+console.log(combine([1, 2, 3, 4], ["a", "b", "c", "d"]));
 console.log(combine([1, 2, 3, 4], ["hello", "hi", "hey", "yes"]));
