@@ -4,6 +4,21 @@ interface Entity {
   id: string;
 }
 
+interface Post extends Entity {
+  __tag: "post";
+  userId: number;
+  title: string;
+  body: string;
+}
+
+interface Comment extends Entity {
+  __tag: "comment";
+  postId: number;
+  name: string;
+  email: string;
+  body: string;
+}
+
 type ApiResponse<T extends Entity> =
   | { status: "success"; data: T[] }
   | { status: "error"; error: string };
@@ -41,13 +56,27 @@ const App: React.FC = () => {
     return fetchMockData("posts");
   };
 
-  const match = () => {};
+  const match = (obj: ApiResponse<Comment | Post>) => {
+    switch(obj.status) {
+      case("success"):
+        return "success";
+      case("error"):
+        return "error";
+    }
+  };
+
+  const obtainData = () => {
+    
+  }
 
   useEffect(() => {
     fetchComments()()
-      .then((res) => setData(res.data))
+      .then((res) => {
+        console.log(res)
+        setData(res.data)
+      })
       .catch((err) => console.log(err));
-  });
+  }, []);
 
   return (
     <div>

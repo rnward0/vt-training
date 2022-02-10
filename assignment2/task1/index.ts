@@ -9,8 +9,14 @@ const slice = <A>(start: number, end: number, val: A[]): A[] => {
 };
 
 //f: [String] -> {String: any} -> {String: any}
-const g = (val: string[], obj: { [k: string]: any }): { [k: string]: any } => {
-  return Object.keys(obj).filter((value) => val.includes(value)).reduce(());
+const extract = (val: string[], obj: Record<string, any>): Record<string, any> => {
+  const newObj: Record<string, any> = {};
+  val.forEach((item: string) => {
+    if(obj[item] !== undefined) {
+      newObj[item] = obj[item]
+    }
+  });
+  return newObj;
 };
 
 // f: [A] → [B] → [[A,B]]
@@ -21,5 +27,5 @@ const combine = <A, B>(val: A[], val2: B[]): [A[], B[]] => {
 //Usage
 console.log(filter(1, [2, 2, 3, 4, 1]));
 console.log(slice(1, 5, ["a", "b", "c", "d", "e", "f"]));
-console.log(g(["a", "something"], { something: 1, "something else": 2 }));
+console.log(extract(["a", "b", "c", "d"], { "b": 1, "c": 2 }));
 console.log(combine([1, 2, 3, 4], ["a", "b", "c", "d"]));
