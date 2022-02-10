@@ -39,7 +39,7 @@ slice(1, 5, ["a", "b", "c", "d", "e", "f"]);
 ```
 
 ### f: [String] -> {String: any} -> {String: any}
-#### Implementation 1
+#### Implementation
 ```js
 const extract = (
   val: string[],
@@ -62,7 +62,7 @@ extract(["a", "b", "c", "d"], { b: 1, c: 2 });
 
 
 ### f: [A] → [B] → [[A,B]]
-#### Implementation 1
+#### Implementation
 ```js
 const combine = <A, B>(val: A[], val2: B[]): [A[], B[]] => {
   return [[...val], [...val2]];
