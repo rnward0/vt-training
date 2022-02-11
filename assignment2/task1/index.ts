@@ -27,8 +27,8 @@ const extract = (
 };
 
 // f: [A] → [B] → [[A,B]]
-const combine = <A, B>(val: A[], val2: B[]): [A[], B[]] => {
-  return [[...val], [...val2]];
+const combine = <A, B>(val: A[], val2: B[]): [A, B][] => {
+  return val.map((item, index) => [item, val2[index]]);
 };
 
 //Usage

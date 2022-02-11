@@ -4,7 +4,13 @@
   "main": "index.js",
   "license": "MIT",
   "devDependencies": {
+    "@types/ramda": "^0.27.64",
+    "@types/react": "^17.0.39",
     "ts-node": "^10.5.0",
     "typescript": "^4.5.5"
+  },
+  "dependencies": {
+    "ramda": "^0.28.0",
+    "react": "^17.0.2"
   }
 }
