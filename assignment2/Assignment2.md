@@ -92,7 +92,7 @@ combine([1, 2, 3, 4], ["a", "b", "c", "d"]);
 
 ```js
 function fetchMockData(
-  variant: "posts"
+  variant: `"posts"`
 ): (id?: number) => Promise<ApiResponse<Post>>;
 function fetchMockData(
   variant: "comments"
