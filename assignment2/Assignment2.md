@@ -8,7 +8,7 @@
 
 #### Implementation 1
 
-```js
+```ts
 const filter = <A>(a: A, arr: A[]): A[] => {
   return arr.filter((item: A) => item !== a);
 };
@@ -16,7 +16,7 @@ const filter = <A>(a: A, arr: A[]): A[] => {
 
 #### Implementation 2
 
-```js
+```ts
 const concat = <A>(a: A, arr: A[]): A[] => {
   return arr.concat(a);
 };
@@ -24,7 +24,7 @@ const concat = <A>(a: A, arr: A[]): A[] => {
 
 #### Usage
 
-```js
+```ts
 filter(1, [2, 2, 3, 4, 1]);
 concat(1, [5, 4, 3, 2]);
 ```
@@ -33,7 +33,7 @@ concat(1, [5, 4, 3, 2]);
 
 #### Implementation
 
-```js
+```ts
 const slice = <A>(start: number, end: number, val: A[]): A[] => {
   return val.slice(start, end);
 };
@@ -41,7 +41,7 @@ const slice = <A>(start: number, end: number, val: A[]): A[] => {
 
 #### Usage
 
-```js
+```ts
 slice(1, 5, ["a", "b", "c", "d", "e", "f"]);
 ```
 
@@ -49,7 +49,7 @@ slice(1, 5, ["a", "b", "c", "d", "e", "f"]);
 
 #### Implementation
 
-```js
+```ts
 const extract = (
   val: string[],
   obj: Record<string, any>
@@ -66,7 +66,7 @@ const extract = (
 
 #### Usage
 
-```js
+```ts
 extract(["a", "b", "c", "d"], { b: 1, c: 2 });
 ```
 
@@ -74,7 +74,7 @@ extract(["a", "b", "c", "d"], { b: 1, c: 2 });
 
 #### Implementation
 
-```js
+```ts
 const combine = <A, B>(val: A[], val2: B[]): [A, B][] => {
   return val.map((item, index) => [item, val2[index]]);
 };
@@ -82,7 +82,7 @@ const combine = <A, B>(val: A[], val2: B[]): [A, B][] => {
 
 #### Usage
 
-```js
+```ts
 combine([1, 2, 3, 4], ["a", "b", "c", "d"]);
 ```
 
@@ -90,7 +90,7 @@ combine([1, 2, 3, 4], ["a", "b", "c", "d"]);
 
 #### Implementation for fetching mock data
 
-```js
+```ts
 function fetchMockData(
   variant: "posts"
 ): (id?: number) => Promise<ApiResponse<Post>>;
@@ -123,7 +123,7 @@ function fetchMockData(variant: "posts" | "comments") {
 
 #### Implementation for fetchComments() and fetchPosts() that use fetchMockData()
 
-```js
+```ts
 const fetchComments = () => {
   return fetchMockData("comments");
 };
@@ -135,7 +135,7 @@ const fetchPosts = () => {
 
 #### Implementation of match function
 
-```js
+```ts
 const match = (
   val: Either<string, Comment[] | Post[]>
 ): ApiResponse<Comment | Post> => {
@@ -158,7 +158,7 @@ const match = (
 
 #### Implementation of script that obtains posts, comments, comments on given post, and specific post
 
-```js
+```ts
 const run = () => {
   fetchComments()()
     .then((res) => console.log(res))
@@ -180,7 +180,7 @@ const run = () => {
 
 #### Implementation of function that obtains number of comments on specific post
 
-```js
+```ts
 const obtainData = () => {
   fetchComments()(5)
     .then((res) => {
@@ -201,7 +201,7 @@ const obtainData = () => {
 
 ##### Logic for dispatching actions was extracted to a seperate function
 
-```js
+```ts
 const dispatchActions = (action: any, options: Object) => {
   const dispatch = useDispatch();
   return dispatch(
@@ -286,7 +286,7 @@ export default DealershipSalesUpdatesContainer;
 
 ##### Made use of pipe to reduce code in updateFaqTopic
 
-```js
+```ts
 async updateFaqTopic(inputFaqTopic: InputFAQTopic) {
     if (!inputFaqTopic.id) {
         throw new NotFoundException("FAQ ID required for update");
