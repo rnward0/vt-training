@@ -8,6 +8,6 @@
     "typescript": "^4.5.5"
   },
   "dependencies": {
-    "ts-option-result": "^0.0.7"
+    "ts-option": "^2.1.0"
   }
 }
