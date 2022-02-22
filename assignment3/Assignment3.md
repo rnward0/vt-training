@@ -96,7 +96,7 @@ const fold = <T>(opt: ProgressOption<T>, f: () => T): number | T => {
 };
 ```
 
-#### Extension 1
+### Extension 1
 
 #### Implementation of mapping
 
