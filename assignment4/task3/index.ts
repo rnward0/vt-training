@@ -20,17 +20,50 @@ class Branch<A> {
   }
 }
 
+const isLeaf = <A>(tree: Tree<A>): tree is Leaf<A> => tree.tag === "leaf";
+const isBranch = <A>(tree: Tree<A>): tree is Branch<A> => tree.tag === "branch";
+
+//Deliverable 1
+
+let leaves: number = 0;
+let branches: number = 0;
+
 const size = <A>(tree: Tree<A>) => {
-  let leaves: number = 0;
-  let branches: number = 0;
+  if (isLeaf(tree)) {
+    leaves++;
+  } else {
+    branches++;
+    tree.left && size(tree.left);
+    tree.right && size(tree.right);
+  }
 };
 
-const max = () => {};
+//Deliverable 2
+
+let maxVal: number = 0;
+
+const max = (tree: Tree<number>) => {
+  if (isLeaf(tree)) {
+    maxVal = tree.value > maxVal ? tree.value : maxVal;
+  } else {
+    tree.left && size(tree.left);
+    tree.right && size(tree.right);
+  }
+};
 
 const depth = () => {};
 
-const map = () => {};
+//Deliverable 4
 
-const filter = () => {};
+const map = <A>(tree: Tree<A>, func: (tree: Tree<A>) => unknown) => {
+  if (isLeaf(tree)) {
+    func(tree);
+  } else {
+    tree.left && func(tree) && map(tree.left, func);
+    tree.right && func(tree) && map(tree.right, func);
+  }
+};
+
+const filter = <A>(tree: Tree<A>, func: (tree: Tree<A>) => unknown) => {};
 
 const zip = () => {};
