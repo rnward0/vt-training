@@ -4,7 +4,7 @@ interface Form<T> {
 }
 
 type Errors<T> = {
-  [Property in Partial<keyof T>]: string;
+  [Property in keyof T]-?: string;
 };
 
 const form: Form<Object> = {
