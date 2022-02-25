@@ -278,5 +278,19 @@ console.log(
 #### Implement a zip that creates a new tree out of two supplied trees by pairing up equally-positioned items from both trees
 
 ```ts
+const zip = (treeA: Tree<number>, treeB: Tree<number>): Tree<number> => {
+  if (isLeaf(treeA) && isLeaf(treeB)) {
+    return new Leaf(treeA.value + treeB.value);
+  } else if (isBranch(treeA) && isBranch(treeB)) {
+    const branchLeft = zip(treeA.left, treeB.left);
+    const branchRight = zip(treeA.right, treeB.right);
+    return new Branch(branchLeft, branchRight);
+  } else if (isBranch(treeA) && isLeaf(treeB)) {
+    return treeA;
+  } else {
+    return treeB;
+  }
+};
 
+console.log(zip(myTreeA, myTreeB));
 ```

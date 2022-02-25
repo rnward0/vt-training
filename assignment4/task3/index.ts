@@ -42,6 +42,51 @@ const myTree: Tree<number> = {
   },
 };
 
+const myTreeA: Tree<number> = {
+  tag: "branch",
+  left: {
+    tag: "leaf",
+    value: 1,
+  },
+  right: {
+    tag: "branch",
+    left: {
+      tag: "leaf",
+      value: 9,
+    },
+    right: {
+      tag: "leaf",
+      value: 8,
+    },
+  },
+};
+
+const myTreeB: Tree<number> = {
+  tag: "branch",
+  left: {
+    tag: "leaf",
+    value: 2,
+  },
+  right: {
+    tag: "branch",
+    left: {
+      tag: "branch",
+      left: {
+        tag: "leaf",
+        value: 2,
+      },
+      right: {
+        tag: "leaf",
+        value: 4,
+      },
+    },
+    right: {
+      tag: "leaf",
+      value: 8,
+    },
+  },
+};
+
 const printUtility = <A>(tree: Tree<A>): void => {
   if (isLeaf(tree)) {
     return console.log(tree.value);
@@ -143,9 +188,10 @@ const zip = (treeA: Tree<number>, treeB: Tree<number>): Tree<number> => {
     const branchRight = zip(treeA.right, treeB.right);
     return new Branch(branchLeft, branchRight);
   } else if (isBranch(treeA) && isLeaf(treeB)) {
-    return new Branch(treeA.left, treeA.right);
+    return treeA;
   } else {
-    //isLeaf(treeA) && isBranch(treeB)
+    return treeB;
   }
-  return treeA;
 };
+
+console.log(zip(myTreeA, myTreeB));
