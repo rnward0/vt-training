@@ -172,6 +172,74 @@ class Branch<A> {
 }
 ```
 
+### Starter trees
+
+```ts
+const myTree: Tree<number> = {
+  tag: "branch",
+  left: {
+    tag: "leaf",
+    value: 1,
+  },
+  right: {
+    tag: "branch",
+    left: {
+      tag: "leaf",
+      value: 9,
+    },
+    right: {
+      tag: "leaf",
+      value: 8,
+    },
+  },
+};
+
+const myTreeA: Tree<number> = {
+  tag: "branch",
+  left: {
+    tag: "leaf",
+    value: 1,
+  },
+  right: {
+    tag: "branch",
+    left: {
+      tag: "leaf",
+      value: 9,
+    },
+    right: {
+      tag: "leaf",
+      value: 8,
+    },
+  },
+};
+
+const myTreeB: Tree<number> = {
+  tag: "branch",
+  left: {
+    tag: "leaf",
+    value: 2,
+  },
+  right: {
+    tag: "branch",
+    left: {
+      tag: "branch",
+      left: {
+        tag: "leaf",
+        value: 2,
+      },
+      right: {
+        tag: "leaf",
+        value: 4,
+      },
+    },
+    right: {
+      tag: "leaf",
+      value: 8,
+    },
+  },
+};
+```
+
 ### Deliverable 1
 
 #### Implement a size function that counts the number of leaves and branches (nodes) in a tree
