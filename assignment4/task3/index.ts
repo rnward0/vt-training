@@ -23,47 +23,125 @@ class Branch<A> {
 const isLeaf = <A>(tree: Tree<A>): tree is Leaf<A> => tree.tag === "leaf";
 const isBranch = <A>(tree: Tree<A>): tree is Branch<A> => tree.tag === "branch";
 
-//Deliverable 1
+const myTree: Tree<number> = {
+  tag: "branch",
+  left: {
+    tag: "leaf",
+    value: 1,
+  },
+  right: {
+    tag: "branch",
+    left: {
+      tag: "leaf",
+      value: 9,
+    },
+    right: {
+      tag: "leaf",
+      value: 8,
+    },
+  },
+};
 
-let leaves: number = 0;
-let branches: number = 0;
-
-const size = <A>(tree: Tree<A>) => {
+const printUtility = <A>(tree: Tree<A>): void => {
   if (isLeaf(tree)) {
-    leaves++;
+    return console.log(tree.value);
   } else {
-    branches++;
-    tree.left && size(tree.left);
-    tree.right && size(tree.right);
+    printUtility(tree.left);
+    printUtility(tree.right);
   }
 };
+
+//Deliverable 1
+
+const size = <A>(tree: Tree<A>): number => {
+  if (isLeaf(tree)) {
+    return 1;
+  }
+  return 1 + size(tree.left) + size(tree.right);
+};
+
+console.log("Size: " + size(myTree));
 
 //Deliverable 2
 
-let maxVal: number = 0;
-
-const max = (tree: Tree<number>) => {
+const max = (tree: Tree<number>, currentMax: number = 0) => {
   if (isLeaf(tree)) {
-    maxVal = tree.value > maxVal ? tree.value : maxVal;
+    currentMax = tree.value > currentMax ? tree.value : currentMax;
   } else {
-    tree.left && size(tree.left);
-    tree.right && size(tree.right);
+    currentMax = max(tree.left, currentMax);
+    currentMax = max(tree.right, currentMax);
   }
+  return currentMax;
 };
 
-const depth = () => {};
+console.log("Max: " + max(myTree));
+
+//Deliverable 3
+
+const depth = <A>(
+  tree: Tree<A>,
+  maxCount: number = 0,
+  currentCount: number = 0
+) => {
+  if (isLeaf(tree)) {
+    currentCount++;
+    if (currentCount > maxCount) {
+      maxCount = currentCount;
+    }
+  } else {
+    currentCount++;
+    maxCount = depth(tree.left, maxCount, currentCount);
+    maxCount = depth(tree.right, maxCount, currentCount);
+  }
+  return maxCount;
+};
+
+console.log("Depth: " + depth(myTree));
 
 //Deliverable 4
 
-const map = <A>(tree: Tree<A>, func: (tree: Tree<A>) => unknown) => {
+const map = <A>(tree: Tree<A>, func: (val: A) => A): Tree<A> => {
   if (isLeaf(tree)) {
-    func(tree);
+    return new Leaf(func(tree.value));
   } else {
-    tree.left && func(tree) && map(tree.left, func);
-    tree.right && func(tree) && map(tree.right, func);
+    return new Branch(map(tree.left, func), map(tree.right, func));
   }
 };
 
-const filter = <A>(tree: Tree<A>, func: (tree: Tree<A>) => unknown) => {};
+console.log(
+  map(myTree, (val: number) => {
+    return val * 2;
+  })
+);
 
-const zip = () => {};
+//Deliverable 5
+
+const filter = <A>(tree: Tree<A>, func: (val: A) => boolean): any => {
+  if (isLeaf(tree) && func(tree.value)) {
+    return;
+  } else if (isLeaf(tree) && !func(tree.value)) {
+    return new Leaf(tree.value);
+  } else if (isBranch(tree)) {
+    return new Branch(filter(tree.left, func), filter(tree.right, func));
+  }
+};
+
+console.log(
+  filter(myTree, (val: number) => {
+    return val === 8;
+  })
+);
+
+//Deliverable 6
+
+const zip = (
+  treeA: Tree<number>,
+  treeB: Tree<number>,
+  levelA: number = 0,
+  levelB: number = 0
+) => {
+  if (levelA === levelB && isLeaf(treeA) && isLeaf(treeB)) {
+    return new Leaf(treeA.value + treeB.value);
+  } else {
+  }
+};
