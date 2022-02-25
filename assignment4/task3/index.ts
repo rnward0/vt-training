@@ -121,7 +121,7 @@ const filter = <A>(tree: Tree<A>, func: (val: A) => boolean): any => {
     return;
   } else if (isLeaf(tree) && !func(tree.value)) {
     return new Leaf(tree.value);
-  } else if (isBranch(tree)) {
+  } else if (isBranch(tree) && tree.left && tree.right) {
     return new Branch(filter(tree.left, func), filter(tree.right, func));
   }
 };
@@ -134,14 +134,18 @@ console.log(
 
 //Deliverable 6
 
-const zip = (
-  treeA: Tree<number>,
-  treeB: Tree<number>,
-  levelA: number = 0,
-  levelB: number = 0
-) => {
-  if (levelA === levelB && isLeaf(treeA) && isLeaf(treeB)) {
+//leaf + leaf = leaf, branch + branch = branch, leaf + branch = branch
+const zip = (treeA: Tree<number>, treeB: Tree<number>): Tree<number> => {
+  if (isLeaf(treeA) && isLeaf(treeB)) {
     return new Leaf(treeA.value + treeB.value);
+  } else if (isBranch(treeA) && isBranch(treeB)) {
+    const branchLeft = zip(treeA.left, treeB.left);
+    const branchRight = zip(treeA.right, treeB.right);
+    return new Branch(branchLeft, branchRight);
+  } else if (isBranch(treeA) && isLeaf(treeB)) {
+    return new Branch(treeA.left, treeA.right);
   } else {
+    //isLeaf(treeA) && isBranch(treeB)
   }
+  return treeA;
 };

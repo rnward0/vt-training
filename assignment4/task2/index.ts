@@ -1,17 +1,27 @@
-interface Form<T> {
+interface Form<T, E> {
   formValues: T;
-  formErrors: Errors<T>;
+  formErrors: E;
+}
+
+interface LocationInfo {
+  city: string;
+  province: string;
+  country: string;
+  continent: string;
 }
 
 type Errors<T> = {
-  [Property in keyof T]-?: string;
+  [Property in keyof T]?: T[Property];
 };
 
-const form: Form<Object> = {
+const form: Form<LocationInfo, Errors<LocationInfo>> = {
   formValues: {
     city: "Calgary",
-    provnce: "AB",
+    province: "AB",
     country: "Canada",
+    continent: "Europe",
+  },
+  formErrors: {
     continent: "Europe",
   },
 };
