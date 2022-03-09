@@ -13,7 +13,6 @@ type CatOptions = {
 };
 
 {
-  //Deliverable 1
   type myOmit<T, G extends keyof T> = {
     [Property in Exclude<keyof T, G>]: T[Property];
   };
