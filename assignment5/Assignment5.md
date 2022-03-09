@@ -65,9 +65,6 @@ new Consumer({ isOrange: false }, app);
 ```
 
 #### This program uses rxjs Observable to prompt for user input and send data to the consumer, who is
-
 #### subscribed to the stream. Within the consumer, a state array is mainained to track the state at each
-
 #### update. An initial state, update, reducer, and view are all utilized to initialize the state, update
-
 #### and keep track of the state, create the new state based on the user input, and update the view respectively.
