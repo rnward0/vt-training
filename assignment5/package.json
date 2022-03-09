@@ -1,0 +1,15 @@
+{
+  "name": "assignment5",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "dependencies": {
+    "inquirer": "^8.2.0",
+    "rxjs": "^7.5.4",
+    "ts-node": "^10.7.0",
+    "typescript": "^4.6.2"
+  },
+  "devDependencies": {
+    "@types/inquirer": "^8.2.0"
+  }
+}
