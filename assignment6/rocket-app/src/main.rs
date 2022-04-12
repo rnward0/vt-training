@@ -2,40 +2,39 @@
 
 #[macro_use]
 extern crate rocket;
+extern crate rocket_contrib;
 
 mod planets;
+mod auth;
 
+//Main routes and functions
 #[get("/")]
 fn index() -> &'static str {
     "Type /is/<any planet> to find out if it's a planet in the solar system!"
 }
 
+//  curl --header "x-api-key: super_secure_key" http://localhost:8000/is/<planet>
+
 #[get("/is/<planet>")]
-fn is_planet(planet: String) -> &'static str {
-    if find_planet(planet) {
+fn is_planet(_key: auth::ApiKey, planet: String) -> &'static str {
+    if planets::find_planet(planet) {
         return "This is a planet!";
     } else {
         return "This is not a planet!";
     }
 }
 
-pub fn find_planet(planet: String) -> bool {
-    let planets: [String; 8] = [
-        "earth".to_string(),
-        "jupiter".to_string(),
-        "saturn".to_string(),
-        "mercury".to_string(),
-        "mars".to_string(),
-        "venus".to_string(),
-        "neptune".to_string(),
-        "uranus".to_string(),
-    ];
-    if planets.contains(&planet) {
-        return true;
-    } else {
-        return false;
-    }
-}
+//  curl --header "x-api-key: super_secure_key" http://localhost:8000/how-far/<planet>
+
+// #[get("/how-far/<planet>")]
+// fn how_far(_key: auth::ApiKey, planet: String) -> String {
+//     if planets::find_planet(&planet) {
+//         let distance: i32 = planets::how_far(&planet);
+//         return format!("This planet is {}km away from us!", distance);
+//     } else {
+//         return "This is not a planet!".to_string();
+//     }
+// }
 
 fn main() {
     rocket::ignite()
